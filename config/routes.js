@@ -9,5 +9,10 @@ let bancoFake =[
     {'4': { Produto: 'Batata rústica', Valor:'18', Categoria:'Acompanhamento'}}
 ]
 
+//buscando dados
+routes.get('/',(req,res) => {
+    return res.json(bancoFake)
+})
+
 
 module.exports = routes
