@@ -9,7 +9,7 @@ let bancoFake =[
     {'4': { Produto: 'Batata rústica', Valor:'18', Categoria:'Acompanhamento'}}
 ]
 
-//buscando dados
+//lendo dados
 routes.get('/',(req,res) => {
     return res.json(bancoFake)
 })
@@ -25,5 +25,25 @@ routes.post('/add',(req,res) => {
     return res.json(body)
 })
 
+// deletando dados
+routes.delete('/:id', (req,res) => {
+    const id = req.params.id
+    let novoDB = bancoFake.filter(item => {
+        if (!item[id])
+        return item
+    })
+
+    bancoFake = novoDB
+    return res.send(novoDB)
+
+})
+
+// atualizando dados
+routes.put('/:id', (req,res) =>{
+    const id = req.params.id    
+    const novoProduto = id.update(req.body)
+
+    return res.json(novoProduto)
+}) 
 
 module.exports = routes
