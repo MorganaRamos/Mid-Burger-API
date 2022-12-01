@@ -14,5 +14,16 @@ routes.get('/',(req,res) => {
     return res.json(bancoFake)
 })
 
+//inserindo dados
+routes.post('/add',(req,res) => {
+    const body = req.body
+
+    if(!body)
+        return res.status(400).end()
+
+    bancoFake.push(body)   
+    return res.json(body)
+})
+
 
 module.exports = routes
